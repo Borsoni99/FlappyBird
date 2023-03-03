@@ -18,6 +18,7 @@ public class WallSpawner : MonoBehaviour
 
     private float speed = 4;
 
+    //teste
     // Start is called before the first frame update
     void Start()
     {
