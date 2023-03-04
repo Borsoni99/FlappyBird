@@ -22,13 +22,18 @@ public class Player : MonoBehaviour
 
     private string DIE_ANIMATION = "IsDead";
 
-    private float soma;
+    //Tive que colocar as duas variaveis abaixo como estaticas para funcionar, n sei se eh ideal
+    public static int totalXP = 2;
+
+    public static int coins = 10;
+
     private void Awake()
     {
         myBody = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         sr = GetComponent<SpriteRenderer>();
         audioSource = GetComponent<AudioSource>();
+        
 
     }
 
@@ -81,8 +86,7 @@ public class Player : MonoBehaviour
             Debug.Log(transform.eulerAngles);
             if (transform.eulerAngles.z < 230 )
             {
-                transform.eulerAngles = new Vector3(0f, 0f, 230);
-                Debug.Log("iff");
+                transform.eulerAngles = new Vector3(0f, 0f, 230);;
             }        
     }
 
