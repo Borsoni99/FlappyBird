@@ -40,7 +40,7 @@ public class WallSpawner : MonoBehaviour
         
         //gap = Random.Range(10,12);
         offset = Random.Range(-9f,-4f);
-        Debug.Log(offset);
+        //Debug.Log(offset);
 
         Vector3 spawnUp = new Vector3(transform.position.x, transform.position.y - offset, transform.position.z);
         Vector3 spawnDown = new Vector3(transform.position.x, transform.position.y - offset - 10f , transform.position.z);
@@ -67,11 +67,14 @@ public class WallSpawner : MonoBehaviour
         {
             Wall wallScript = wall.GetComponent<Wall>();
 
-            if (wallScript != null)
-                wallScript.speed *= 1.1f;
+                if (wallScript != null)
+                {
+                    wallScript.speed += 0.1f;
+                    Debug.Log("wall speed: " + wallScript.speed);
+                }
         }
 
-        speed *= 1.1f;
+        speed += 0.1f;
         }
     }
 
