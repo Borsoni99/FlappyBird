@@ -58,20 +58,19 @@ public class WallSpawner : MonoBehaviour
     {
         while (true)
         {
-        yield return new WaitForSeconds(2.5f);
+            yield return new WaitForSeconds(2.5f);
 
-        GameObject[] walls = GameObject.FindGameObjectsWithTag("Wall");
+            GameObject[] walls = GameObject.FindGameObjectsWithTag("Wall");
         
 
-        foreach (GameObject wall in walls)
-        {
-            Wall wallScript = wall.GetComponent<Wall>();
+            foreach (GameObject wall in walls)
+            {
+                Wall wallScript = wall.GetComponent<Wall>();
 
-                if (wallScript != null)
-                {
-                    wallScript.speed += 0.1f;
-                    Debug.Log("wall speed: " + wallScript.speed);
-                }
+                    if (wallScript != null)
+                    {
+                        wallScript.speed += 0.1f;                    
+                    }
         }
 
         speed += 0.1f;

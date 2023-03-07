@@ -5,16 +5,17 @@ using UnityEngine;
 
 public static class SaveSystem
 {
-    public static void SavePlayer (Player player)	
+    public static void SavePlayer (Player player, PlayerData playerData)	
     {
         BinaryFormatter formatter = new BinaryFormatter();
         string path = Application.persistentDataPath + "/player.flap";
-        FileStream stream = new FileStream(path, FileMode.Create);
-
         PlayerData data = new PlayerData(player);
 
-        formatter.Serialize(stream, data);
-        stream.Close();
+        using (FileStream stream = new FileStream(path, FileMode.Create))
+        { 
+            formatter.Serialize(stream, player);
+        }
+        
     }
 
     public static PlayerData LoadPlayer()
@@ -23,13 +24,12 @@ public static class SaveSystem
         if (File.Exists(path))
         {
             BinaryFormatter formatter = new BinaryFormatter();
-            FileStream stream = new FileStream(path, FileMode.Open);
 
-            PlayerData data = formatter.Deserialize(stream) as PlayerData;
-
-            stream.Close();
-
-            return data;
+            using (FileStream stream = new FileStream(path, FileMode.Open))
+            {
+                PlayerData data = formatter.Deserialize(stream) as PlayerData;
+                return data;
+            }            
         }
         else
         {

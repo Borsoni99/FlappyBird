@@ -2,12 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Colletables : MonoBehaviour
+public class Coin : MonoBehaviour, ICollectable
 {
     [HideInInspector]
     public float speed;
 
     private Rigidbody2D myBody;
+
+    public void Collect(GameObject collectedItem)
+    {
+        Player.coins += 1;
+        Destroy(gameObject);
+    }
 
     void Awake()
     {
@@ -17,5 +23,10 @@ public class Colletables : MonoBehaviour
     void FixedUpdate()
     {
         myBody.velocity = new Vector2(-speed, 0);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Collect(gameObject);       
     }
 }

@@ -25,7 +25,9 @@ public class Player : MonoBehaviour
     //Tive que colocar as duas variaveis abaixo como estaticas para funcionar, n sei se eh ideal
     public static int totalXP = 2;
 
-    public static int coins = 10;
+    public static int coins = 4;
+
+    public static int apples = 1;
 
     private void Awake()
     {
@@ -34,7 +36,6 @@ public class Player : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
         audioSource = GetComponent<AudioSource>();
         
-
     }
 
     // Start is called before the first frame update
@@ -91,7 +92,11 @@ public class Player : MonoBehaviour
     }
 
     private void Die()
-    {          
+    {
+        ;
+        SaveSystem.SavePlayer(SaveSystem.LoadPlayer());           
+            
+
         Destroy(gameObject);
         GameManager.instance.PlayerDied();        
     }
