@@ -64,7 +64,7 @@ public class GameManager : MonoBehaviour
 
     public void OnVolumeSliderChanged(float newVolume)
     {   
-        Debug.Log("setting volume to "+ newVolume);
+        //Debug.Log("setting volume to "+ newVolume);
         audioSource.volume = newVolume;
     }
 }

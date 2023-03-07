@@ -22,7 +22,7 @@ public class MainMenuController : MonoBehaviour
     public void SetChar()
     {
         int characterIndex = int.Parse(UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject.name);
-        Debug.Log("Character set to "+characterIndex);
+        //Debug.Log("Character set to "+characterIndex);
         GameManager.instance.CharIndex = characterIndex;     
     }
 
